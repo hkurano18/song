@@ -16,7 +16,7 @@ RUN ./mvnw clean package -DskipTests
 FROM ubuntu:24.04 as client
 
 ENV CLIENT_DIST_DIR   /song-client-dist
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$SCORE_CLIENT_HOME/bin:$JAVA_HOME/bin
 ENV SONG_HOME   /song-client
 ENV SONG_UID 9999
@@ -31,7 +31,7 @@ RUN apt-get update \
     curl \
     fuse3 \
     libfuse2 \
-    openjdk-17-jre-headless \
+    openjdk-11-jre-headless \
     && rm -rf /var/lib/apt/lists/* 
 
 RUN addgroup --system --gid $SONG_GID $SONG_USER  \
