@@ -16,7 +16,7 @@ RUN ./mvnw clean package -DskipTests
 FROM adoptopenjdk/openjdk11:latest as client
 
 ENV CLIENT_DIST_DIR   /song-client-dist
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV JAVA_HOME=/opt/java/openjdk
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$SCORE_CLIENT_HOME/bin:$JAVA_HOME/bin
 ENV SONG_HOME   /song-client
 ENV SONG_UID 9999
