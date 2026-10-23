@@ -13,7 +13,7 @@ RUN ./mvnw clean package -DskipTests
 # Song Client
 ###############################
 # -alpine image only works on amd64 arch
-FROM ubuntu:24.04 as client
+FROM adoptopenjdk/openjdk11:latest as client
 
 ENV CLIENT_DIST_DIR   /song-client-dist
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -26,12 +26,7 @@ ENV SONG_LOGS $SONG_HOME/logs
 ENV PATH $PATH:$SONG_HOME/bin
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    fuse3 \
-    libfuse2 \
-    openjdk-11-jre-headless \
+    && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/* 
 
 RUN addgroup --system --gid $SONG_GID $SONG_USER  \
