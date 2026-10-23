@@ -49,7 +49,7 @@ jobs:
           target: client
           platforms: linux/amd64
           push: true
-          tags: 5.4.1
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
